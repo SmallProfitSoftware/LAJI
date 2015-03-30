@@ -9,7 +9,7 @@ public class Demo {
 		// TODO Auto-generated method stub
 		System.out.println("大幅度反弹的的");
 		int i =0 ;
-		System.out.println("大幅度反弹的的");
+		System.out.println("大幅度弹的的");
 	}
 
 }
