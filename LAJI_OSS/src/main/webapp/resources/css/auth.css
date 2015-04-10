@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+.qxfb-box{ width:1200px;padding:15px; font-size:12px; color:#666;}
+.qxfb-box h2{font-size:12px;}
+/* .qxfb-box h2 span{ margin-left:20px;} */
+.qxfb-ul{ margin-top:10px; border-top:2px #e0e0e0 solid;}
+.qxfb-ul li{ padding-left:15px; height:35px; line-height:35px; border-bottom:1px #e0e0e0 solid;}
+.qxfb-ul .icon-checkbox{ padding-left:20px; background:url(../../images/icon/checkbox_qxfp.gif) 0 -1px no-repeat; cursor:pointer; display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-moz-text-overflow:ellipsis;}
+.qxfb-ul .icon-checkbox-on{ background-position:0 -35px;}
+/*
+.qxfb-ul dl{}
+.qxfb-ul dl dt{ padding-left:35px; height:35px; line-height:35px; border-bottom:1px #e0e0e0 solid;}
+.qxfb-ul dl dd ul{}
+.qxfb-ul dl dd ul li{ padding-left:55px;}
+.qxfb-ul dl dd ul li div{ float:left; width:200px; padding-right:9px;}
+.qxfb-ul dl dd ul li div span{ width:180px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-moz-text-overflow:ellipsis;}
+*/
+.qxfb-ul li.list-01{padding-left:35px;}
+.qxfb-ul li.list-02{ padding-left:55px;}
+.qxfb-ul li.list-02 div{ float:left; width:200px; padding-right:9px;}
+.qxfb-ul li.list-02 div span{ width:180px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-moz-text-overflow:ellipsis;}

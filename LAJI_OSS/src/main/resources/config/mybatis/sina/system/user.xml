@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.profit.laji.entity.system.User">
+
+	<resultMap type="User" id="UserResult">
+	</resultMap>	
+	
+	<!-- 获取所有 -->
+	<select id="getAll" resultMap="UserResult">
+		select u.id, u.role, u.userId, u.userPwd, u.userName, u.isLock, u.loginCount, u.lastLoginIp, u.lastLoginDate, u.createDate, u.creater, u.updateDate, u.updater from app_heyang.t_user u
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryList" resultMap="UserResult">
+		select u.id, u.role, u.userId, u.userPwd, u.userName, u.isLock, u.loginCount, u.lastLoginIp, u.lastLoginDate, u.createDate, u.creater, u.updateDate, u.updater from app_heyang.t_user u
+		<where>
+			<if test="userId != null and userId != ''">
+				and u.userId like '%${userId}%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.userName like '%${userName}%'
+			</if>
+			<if test="role != null and role != ''">
+				and u.role = #{role}
+			</if>
+		</where>
+		order by ${orderBy}
+		limit ${bNo},${eNo}
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryCount" resultType="java.lang.Integer">
+		select count(1) from app_heyang.t_user u
+		<where>
+			<if test="userId != null and userId != ''">
+				and u.userId like '%${userId}%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.userName like '%${userName}%'
+			</if>
+			<if test="role != null and role != ''">
+				and u.role = #{role}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 获取用户 -->
+	<select id="getById" resultType="User">
+		select u.id, u.role, u.userId, u.userPwd, u.userName, u.isLock, u.loginCount, u.lastLoginIp, u.lastLoginDate, u.createDate, u.creater, u.updateDate, u.updater from app_heyang.t_user u
+		<where>
+			u.userId = #{_parameter}
+		</where>
+		limit 1
+	</select>
+	
+	<!-- 获取用户 -->
+	<select id="get" resultType="User">
+		select u.id, u.role, u.userId, u.userPwd, u.userName, u.isLock, u.loginCount, u.lastLoginIp, u.lastLoginDate, u.createDate, u.creater, u.updateDate, u.updater from app_heyang.t_user u
+		<where>
+			<if test="userId != null and userId != ''">
+				and u.userId like '%${userId}%'
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.userName like '%${userName}%'
+			</if>
+		</where>
+		limit 1
+	</select>
+	
+	<!-- 更新 -->
+	<update id="updatePwd" parameterType="User">
+		update app_heyang.t_user set userPwd = #{userPwd}, updateDate = now(), updater = #{updater} where userId = #{userId}
+	</update>
+	
+	<!-- 更新密码 -->
+	<update id="update" parameterType="User">
+		update app_heyang.t_user set role = #{role}, userName = #{userName}, updateDate = now(), updater = #{updater} where id = #{id}
+	</update>
+	
+	<!-- 更新最后登陆信息 -->
+	<update id="updateLastLogin" parameterType="User">
+		update app_heyang.t_user set loginCount = loginCount + 1, lastLoginIp = #{lastLoginIp}, lastLoginDate = now(), updater = #{userId}, updateDate = now()
+		where userId = #{userId}
+	</update>
+	
+	<!-- 锁定/解锁 -->
+	<update id="lock" parameterType="java.lang.String">
+		update app_heyang.t_user set isLock = 1 - isLock, updateDate = now(), updater = #{updater} where userId = #{userId}
+	</update>
+	
+	<!-- 添加用户 -->
+	<insert id="insert" parameterType="User">
+		insert into app_heyang.t_user(`role`, `userId`, `userPwd`, `userName`, `isLock`, `loginCount`, `lastLoginIp`, `lastLoginDate`, `createDate`, `creater`, `updateDate`, `updater`) 
+		values(#{role}, #{userId}, #{userPwd}, #{userName}, 0, 0, null, null, now(), #{creater}, now(), #{updater})
+	</insert>
+	
+</mapper>

@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*	浮动	*/
+.f-l{ float:left;}
+.f-r{ float:right;}
+.m-t-10{ margin-top:10px;}
+.m-l-10{ margin-left:10px;}
+.m-t-30{ margin-top:30px;}
+
+.m-r-200{ margin-right:200px;}
+
+/*	链接	*/
+a:link.bule-link-01,a:visited.bule-link-01{color:#0c76bf; text-decoration:none;}
+a:hover.bule-link-01{ color:#f60;text-decoration:underline;}
+
+a:link.bule-link-01-u,a:visited.bule-link-01-u{color:#0c76bf; text-decoration:underline;}
+a:hover.bule-link-01-u{ color:#f60;}
+
+a:link.org-link-01,a:visited.org-link-01{color:#f60; text-decoration:none;}
+a:hover.org-link-01{text-decoration:underline;}
+
+
+/*	字体颜色	*/
+.color-red{color:#f00 !important;position: static;}
+.color-org{color:#f60 !important;position: static;}
+.color-gray{color:#999 !important;position: static;}
+
+.layout{}

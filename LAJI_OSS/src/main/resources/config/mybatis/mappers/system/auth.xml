@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.profit.laji.entity.system.Auth">
+
+	<resultMap type="Auth" id="AuthResult">
+	</resultMap>	
+
+	<!-- 获取所有 -->
+	<select id="getAll" resultMap="AuthResult">
+		select a.id, a.code, a.str, a.name, a.url from oss.`t_auth` a
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryList" resultMap="AuthResult">
+		select a.id, a.code, a.str, a.name, a.url from oss.`t_auth` a
+		<where>
+			<if test="code != null and code != ''">
+				and a.code like '%${code}%'
+			</if>
+			<if test="str != null and str != ''">
+				and a.str like '%${str}%'
+			</if>
+			<if test="name != null and name != ''">
+				and a.name like '%${name}%'
+			</if>
+			<if test="url != null and url != ''">
+				and a.url like '%${url}%'
+			</if>
+			<if test="pcode != null and pcode != ''">
+				and left(a.code, length(#{pcode})) = #{pcode}
+			</if>
+			<if test="len != null and len != ''">
+				and length(a.code) = ${len}
+			</if>
+		</where>
+		order by ${orderBy}
+		limit ${bNo},${eNo}
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryCount" resultType="java.lang.Integer">
+		select count(1) from oss.`t_auth` a
+		<where>
+			<if test="code != null and code != ''">
+				and a.code like '%${code}%'
+			</if>
+			<if test="str != null and str != ''">
+				and a.str like '%${str}%'
+			</if>
+			<if test="name != null and name != ''">
+				and a.name like '%${name}%'
+			</if>
+			<if test="url != null and url != ''">
+				and a.url like '%${url}%'
+			</if>
+			<if test="pcode != null and pcode != ''">
+				and left(a.code, length(#{pcode})) = #{pcode}
+			</if>
+			<if test="len != null and len != ''">
+				and length(a.code) = ${len}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 获取最大的编码 -->
+	<select id="maxCode" resultType="java.lang.String">
+		select max(a.code) from oss.`t_auth` a 
+		<where>
+			length(a.code) = ${len}
+			<if test="pcode != null and pcode != ''">
+				and left(a.code, ${len} - 2) = #{pcode}  
+			</if>
+		</where>
+	</select>
+	
+	<!-- 获取存在 -->
+	<select id="getExist" resultType="Auth">
+		select a.id, a.code, a.str, a.name, a.url from oss.`t_auth` a
+		<where>
+			<if test="str != null and str != ''">
+				or a.str = #{str}
+			</if>
+			<if test="url != null and url != ''">
+				or a.url = #{url}
+			</if>
+		</where>
+		limit 1
+	</select>
+	
+	<!-- 查询存在数量 -->
+	<select id="getExists" resultMap="AuthResult">
+		select a.id, a.code, a.str, a.name, a.url from oss.`t_auth` a
+		<where>
+			<if test="strs != null and strs != ''">
+				and a.str in (${strs})
+			</if>
+			<if test="urls != null and urls != ''">
+				and a.url in (${urls})
+			</if>
+		</where>
+	</select>
+	
+	<!-- 获取 -->
+	<select id="get" resultType="Auth">
+		select a.id, a.code, a.str, a.name, a.url from oss.`t_auth` a
+		<where>
+			<if test="str != null and str != ''">
+				and a.str = #{str}
+			</if>
+			<if test="url != null and url != ''">
+				and a.url = #{url}
+			</if>
+		</where>
+		limit 1
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Auth">
+		insert into oss.`t_auth`(`code`, `str`, `name`, `url`) values(#{code}, #{str}, #{name}, #{url})
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" parameterType="Auth">
+		update oss.`t_auth` set str = #{str}, name = #{name}, url = #{url} where code = #{code}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="delByCode" parameterType="java.lang.String">
+		delete from oss.`t_auth` where left(code, length(#{_parameter})) = #{_parameter}
+	</delete>
+</mapper>

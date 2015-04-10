@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>欢迎登录后台运营支撑管理系统</title>
+<link href="/resources/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/resources/plugins/jbox/jBox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/resources/plugins/artDialog4.1.7/artDialog.js?skin=easy"></script>
+<script type="text/javascript" src="/resources/plugins/artDialog4.1.7/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="/resources/plugins/jbox/jBox.min.js"></script>
+<script type="text/javascript" src="/resources/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="/resources/js/common/common.js"></script>
+<script type="text/javascript" src="/resources/js/login/cloud.js"></script>
+<script type="text/javascript" src="/resources/js/login/login.js"></script>
+</head>
+
+<body
+	style="background-color: #1c77ac; background-image: url(/resources/images/light.png); background-repeat: no-repeat; background-position: center top; overflow: hidden;">
+	<form name="frm" action="/views/system/main.htm" method="post"></form>
+	<div id="mainBody">
+		<div id="cloud1" class="cloud"></div>
+		<div id="cloud2" class="cloud"></div>
+	</div>
+	<div class="logintop">
+		<span>欢迎登录后台运营支撑管理系统</span>
+		<!-- <ul>
+			<li><a href="#">回首页</a></li>
+			<li><a href="#">帮助</a></li>
+			<li><a href="#">关于</a></li>
+		</ul> -->
+	</div>
+
+	<div class="loginbody">
+		<span class="systemlogo" style="margin:10;padding:10;display:block;"></span>
+		<div class="loginbox">
+			<ul>
+				<li><input name="userId" id="userId" type="text" class="loginuser" value=""
+					title="请输入用户名！" placeholder="请输入用户名！"/></li>
+				<li><input name="userPwd" id="userPwd" type="password" class="loginpwd" value=""
+					title="请输入密码！" placeholder="请输入密码！"/></li>
+				<li><input name="" type="button" class="loginbtn" id="loginbtn" value="登录"/><label><input
+					id="remBtn"	name="" type="checkbox" value="" checked="checked" />记住帐号</label></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="loginbm">
+		版权所有 2015-2025 <a href="http://www.laji.net">laji.net</a>
+		仅供内部使用
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.profit.laji.entity.system.SysLog">
+
+	<resultMap type="SysLog" id="SysLogResult">
+	</resultMap>	
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="SysLog">
+		insert into oss.`t_sysLog`(`module`, `act`, `ip`, `status`, `message`, `operator`, `operateDate`) 
+		values(#{module}, #{act}, #{ip}, #{status}, #{message}, #{operator}, now())
+	</insert>
+	
+	<!-- 查询列表 -->
+	<select id="queryList" resultMap="SysLogResult">
+		select s.operator, s.module, s.act, s.ip, s.status, s.message, s.operateDate from oss.`t_sysLog` s
+		<where>
+			<if test="operator != null and operator != ''">
+				and s.operator like '%${operator}%' 
+			</if>
+			<if test="status != null and status != ''">
+				and s.status = #{status}
+			</if>
+		</where>
+		order by ${orderBy}
+		limit ${bNo},${eNo}
+	</select>
+	
+	<!-- 查询数量 -->
+	<select id="queryCount" resultType="java.lang.Integer">
+		select count(1) from oss.`t_sysLog` s
+		<where>
+			<if test="operator != null and operator != ''">
+				and s.operator like '%${operator}%' 
+			</if>
+			<if test="status != null and status != ''">
+				and s.status = #{status}
+			</if>
+		</where>
+	</select>
+</mapper>

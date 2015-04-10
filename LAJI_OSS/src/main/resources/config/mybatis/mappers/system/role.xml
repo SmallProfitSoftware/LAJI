@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.profit.laji.entity.system.Role">
+
+	<resultMap type="Role" id="RoleResult">
+	</resultMap>
+	
+	<resultMap type="RoleAuth" id="RoleAuthResult">
+	</resultMap>	
+	
+	<!-- 获取角色权限 -->
+	<select id="queryRoleAuths" resultMap="RoleAuthResult">
+		select r.id, r.roleCode, r.authCode from oss.`r_role_auth` r where r.roleCode = #{_parameter}
+	</select>
+	
+	<!-- 获取所有 -->
+	<select id="getAll" resultMap="RoleResult">
+		select r.id, r.code, r.name from oss.`t_role` r
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryList" resultMap="RoleResult">
+		select r.id, r.code, r.name from oss.`t_role` r
+		order by ${orderBy}
+		limit ${bNo},${eNo}
+	</select>
+	
+	<!-- 获取列表 -->
+	<select id="queryCount" resultType="java.lang.Integer">
+		select count(1) from oss.`t_role` r
+	</select>
+	
+	<!-- 获取最大编码 -->
+	<select id="maxCode" resultType="java.lang.String">
+		select max(r.code) from oss.`t_role` r
+	</select>
+	
+	<!-- 获取 -->
+	<select id="get" resultType="Role">
+		select r.id, r.code, r.name from oss.`t_role` r
+		<where>
+			<if test="name != null and name != ''">
+				and r.name = #{name}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Role">
+		insert into oss.`t_role`(`code`, `name`) values(#{code}, #{name})
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="update" parameterType="Role">
+		update oss.`t_role` set name = #{name} where code = #{id}
+	</update>
+	
+	<!-- 新增 -->
+	<insert id="add" parameterType="RoleAuth">
+		insert into oss.`r_role_auth`(`roleCode`, `authCode`) values(#{roleCode}, #{authCode})
+	</insert>
+	
+	<!-- 删除角色权限 -->
+	<delete id="deleteRA">
+		delete from oss.`r_role_auth` where roleCode = #{_parameter}
+	</delete>
+
+</mapper>

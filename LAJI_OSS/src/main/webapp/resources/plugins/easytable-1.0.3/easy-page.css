@@ -1,0 +1,18 @@
+/*	easy-page	*/
+.easy-page{ padding:15px 0 0;}
+.easy-page .total{ color:#666;}
+.easy-page .page{}
+.easy-page .page a{ margin-left:5px; padding:0 10px; height:23px; line-height:23px; border:1px #ccc solid; display:inline-block;}
+.easy-page .page span{ margin:0 5px;}
+.easy-page .page a,.easy-page .page a:visited{ color:#666; text-decoration:none;}
+.easy-page .page a:hover{border:1px #D01804 solid; color:#D01804;}
+.easy-page .page a.cur{ background:#D01804 ;border:1px #D01804 solid;}
+.easy-page .page a.cur,.easy-page .page a:visited.cur,.easy-page .page a:hover.cur{ color:#fff;}
+
+.tips-noData{ margin:150px auto; width:300px;}
+.tips-noData dt{ float:left; width:48px;}
+.tips-noData dd{ float:left; font-size:18px; color:#333; width:250px; line-height:48px;}
+.icon-tips-01{ width:48px;height:48px; background:url(warning.png) no-repeat; display:block}
+
+.Data-loaded{margin:150px auto; width:300px;font-size:18px; text-align:center; color:#333; line-height:30px;}
+.Data-loaded .icon-loading{ margin-left:5px; width:16px; height:11px; display:inline-block; background:url(loading_01.gif) no-repeat;}
